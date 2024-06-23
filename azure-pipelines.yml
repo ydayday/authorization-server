@@ -1,0 +1,18 @@
+resources:
+  repositories:
+  - repository: citemplate
+    type: git
+    name:
+    ref: main
+
+trigger:
+  branches:
+    include:
+    - test
+  tags:
+    include:
+    - v*.*.*
+
+extends:
+  template:
+  

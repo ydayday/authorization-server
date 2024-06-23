@@ -1,0 +1,51 @@
+server:
+  port: 27001
+  shutdown: graceful
+  servlet:
+    encoding:
+      enabled: true
+      force: true
+      charset: UTF-8
+
+spring:
+  datasource:
+    type: org.springframework.jdbc.datasource.SimpleDriverDataSource
+    url:
+    username:
+    password:
+    driver-class-name: org.postgresql.Driver
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:27001/oauth2/jwks
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    properties:
+      hibernate:
+        default_batch_fetch_size: 100
+        naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        format_sql: true
+
+logging:
+  config: classpath:logback.xml
+  level:
+    root: info
+
+#p6spy query logging
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: true
+
+host-uri: http://localhost:27001
+
+aes-secret-key : ABC2024#EWHGBXenc#Aes####0411
+aes-iv : E6bvKd7ZcGYxQNRa
+
+private-key : ${rsa.private.key}
+
+
+
